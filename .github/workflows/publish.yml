@@ -2,7 +2,7 @@ name: CI/CD Automated Deployment
 
 on:
   push:
-    branches: [ "principal" ]
+    branches: [ "main" ]
 
 env:
   REGISTRY: ghcr.io
@@ -24,7 +24,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: "ghp_zXbtTomOZUxltBUsSlcae1DbDFB0tG1waB9L"
+          password: ${{ secrets.GH_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
